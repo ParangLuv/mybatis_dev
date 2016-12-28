@@ -1,5 +1,7 @@
 package kr.or.dgit.bigdata.mybatis_dev;
 
+import java.util.Calendar;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.AfterClass;
@@ -7,6 +9,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import kr.or.dgit.bigdata.mybatis_dev.dto.PhoneNumber;
+import kr.or.dgit.bigdata.mybatis_dev.dto.Student;
+import kr.or.dgit.bigdata.mybatis_dev.service.StudentService;
 import kr.or.dgit.bigdata.mybatis_dev.util.MyBatisSqlSessionFactory;
 
 public class MyBatisSqlSessionTest {
@@ -27,5 +32,6 @@ public class MyBatisSqlSessionTest {
 		SqlSession session = sqlSessionFactory.openSession();
 		Assert.assertNotNull(session);
 	}
+
 
 }
