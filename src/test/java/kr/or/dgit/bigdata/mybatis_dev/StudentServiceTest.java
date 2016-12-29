@@ -118,5 +118,11 @@ public class StudentServiceTest {
 		}
 	}
 	
+	@Test
+	public void selectStudentWithAddress(){
+		Student std = studentService.selectStudentWithAddress(1);
+		Assert.assertNotNull(std);
+	}
+	
 	
 }
