@@ -61,4 +61,30 @@
 		where stud_id=#{studId}
 	</select>
 	
+	<resultMap id="StudentWithAddressResult" type="Student">
+		<id property="studId" column="stud_id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="dob" column="dob" />
+		<association property="address" resultMap="kr.or.dgit.bigdata.mybatis_dev.mappers.AddressMapper.AddrRes"></association>
+	</resultMap> 
+
+	<select id="selectStudentWithAddressResult" parameterType="int" resultMap="StudentWithAddressResult">
+		select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country
+		from students s inner join address a on s.addr_id = a.addr_id
+		where stud_id=#{studId}
+	</select>
+	
+	<update id="updateSetStudent" parameterType="Student">
+		update students
+		<set>
+			<if test="name != null">name=#{name},</if>
+			<if test="email != null">email=#{email},</if>
+			<if test="phone != null">phone=#{phone},</if>
+			<if test="dob != null">dob=#{dob},</if>
+		</set>
+		where stud_id=#{studId}
+	</update>
+	
 </mapper>

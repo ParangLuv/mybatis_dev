@@ -1,6 +1,8 @@
 package kr.or.dgit.bigdata.mybatis_dev;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
@@ -122,6 +124,31 @@ public class StudentServiceTest {
 	public void selectStudentWithAddress(){
 		Student std = studentService.selectStudentWithAddress(1);
 		Assert.assertNotNull(std);
+	}
+	
+	@Test
+	public void selectStudentWithAddressResult(){
+		Student std = studentService.selectStudentWithAddressResult(1);
+		Assert.assertNotNull(std);
+	}
+	
+	@Test
+	public void testUpdateSetStudent(){
+		Student student = new Student();
+		student.setStudId(1);
+		student.setEmail("test@test.co.kr");
+		student.setPhone(new PhoneNumber("987-654-3211"));
+		student.setDob(new Date());
+		
+		int result = studentService.updateSetStudent(student);
+		Assert.assertSame(1, result);
+		
+		student.setEmail("timothy@gmail.com");
+		student.setPhone(new PhoneNumber("123-123-1324"));
+		student.setDob(new GregorianCalendar(1988,04,25).getTime());
+		
+		result = studentService.updateSetStudent(student);
+		Assert.assertSame(1, result);
 	}
 	
 	

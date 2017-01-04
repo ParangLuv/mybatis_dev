@@ -52,14 +52,13 @@ public class Student {
 		this.address = address;
 	}
 	
+		
+	/*toString*/
+	
 	@Override
 	public String toString() {
 		return String.format("[%s, %s, %s, %s, %s, %s]", studId, name, email, phone, dob, address);
 	}
-	
-	/*toString*/
-	
-	
 
 	
 }

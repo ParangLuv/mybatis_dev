@@ -16,10 +16,15 @@ public interface StudentMapper {
 	int insertStudentAutoInc(Student student);
 		
 	int updateStudent(Student student);
+	int updateSetStudent(Student student);
 	
 	int deleteStudent(int id);
 	
 	//////////// Join&Expand /////////////
-	Student selectStudentWithAddress(int id);
+	Student selectStudentWithAddress(int id);		// 한번 사용할 때 쓸 방법
 	
+	Student selectStudentWithAddressResult(int id); // 추천하는 방법
+	
+
+
 }

@@ -170,4 +170,36 @@ public class StudentService {
 		}
 		
 	}
+	
+	public Student selectStudentWithAddressResult(int studId){
+		
+		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+		
+		try{
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			return studentMapper.selectStudentWithAddressResult(studId);
+		}finally{
+			sqlSession.close();
+		}
+		
+	}
+	
+	public int updateSetStudent(Student student){
+		
+		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+		
+		try {
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			int res = studentMapper.updateSetStudent(student);
+			sqlSession.commit();
+			return res;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+			throw new RuntimeException(e.getCause());
+		} finally{
+			sqlSession.close();
+		}
+	}
+	
 }
